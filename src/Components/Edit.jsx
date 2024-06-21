@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Edit = () => {
   const notify = () => toast("data updated!");
+
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -17,12 +18,14 @@ const Edit = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
     axios
       .get(`https://66712b38e083e62ee43a5e4f.mockapi.io/crudd/${id}`)
       .then((response) => {
         const data = response.data;
+
         setName(data.name);
         setEmail(data.email);
         setPhone(data.phone);
